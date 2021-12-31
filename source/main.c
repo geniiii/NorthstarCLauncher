@@ -124,7 +124,7 @@ i32 main(i32 args_count, char** args) {
 			return 1;
 		}
 		
-		if (data_size != 0 && data[0] == '0') {
+		if (data_size != 0 && !CStringToI32((char*) data)) {
 			load_northstar = 0;
 		}
 	}
