@@ -6,8 +6,7 @@
 #define UNICODE
 #define WINVER       0x0601
 #define _WIN32_WINNT 0x0601
-#define RPC_NO_WINDOWS_H
-#define VC_EXTRALEAN
+#define PSAPI_VERSION 2
 #define NOATOM
 #define NOHELP
 #define NOPROFILER
@@ -27,20 +26,31 @@
 #define NOMCX
 #define NOIME
 #define NODEFERWINDOWPOS
+#define NOMEMMGR
+#define NOSOUND
+#define NOWH
+#define NOWINMESSAGES
+#define NOVIRTUALKEYCODES
+#define NOWINSTYLES
+#define NOICONS
+#define NOCLIPBOARD
+#define NOKERNEL
+#define NOSHOWWINDOW
 #define WIN32_LEAN_AND_MEAN
-#define WIN32_EXTRA_LEAN
-#define PSAPI_VERSION 2
 #include <Windows.h>
 #include <Tlhelp32.h>
 #undef DeleteFile
 #undef CopyFile
+
+#define MemoryCopy CopyMemory
+#define MemoryMove MoveMemory
+#define MemorySet  FillMemory
 
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
 
 #include "language_layer.h"
-
 #include "memory.h"
 #include "string8.h"
 #include "string16.h"

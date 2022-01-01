@@ -8,14 +8,14 @@ internal inline String16 S16_FromWString(u16* wstr) {
 }
 
 internal String16 S16_PushFV(MArena* arena, const u16* fmt, va_list args) {
+	// TODO(geni): _vsnwprintf is MSVC-specific and requires including stdio.h
+	
 	va_list args2;
 	va_copy(args2, args);
-	// TODO(geni): _vsnwprintf is MSVC-specific
 	u64 needed_bytes = _vsnwprintf(0, 0, fmt, args) + 1;
 	String16 result;
 	{
 		result.s              = MArenaPushTypeN(arena, u16, needed_bytes);
-		// TODO(geni): _vsnwprintf is MSVC-specific
 		result.size           = _vsnwprintf(result.s, needed_bytes, fmt, args2);
 		result.s[result.size] = L'\0';
 	}
