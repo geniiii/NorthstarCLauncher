@@ -117,7 +117,7 @@ i32 main(i32 args_count, char** args) {
 	}
 	
 	b32 load_northstar = !(flags & Flags_Vanilla);
-	if (!load_northstar && FileExists(S16Lit(L"run_northstar.txt"))) {
+	if (load_northstar && FileExists(S16Lit(L"run_northstar.txt"))) {
 		u8* data;
 		u64 data_size;
 		if (!LoadEntireFile(&g_arena, S16Lit(L"run_northstar.txt"), &data, &data_size)) {
